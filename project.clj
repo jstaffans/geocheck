@@ -1,5 +1,5 @@
 (defproject geocheck "0.1.0-SNAPSHOT"
-  :description "Geometry analysis using Apache Spark"
+  :description "Spatial analysis of geometries"
   :url "http://example.com/FIXME"
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
@@ -10,5 +10,5 @@
                  [criterium "0.4.3"]]
   :profiles {:uberjar {:aot :all}}
   :jvm-opts ["-Xmx2g"]
-  :main ^:skip-aot geocheck.core
+  :main ^:skip-aot geocheck.flambo
   :target-path "target/%s")
