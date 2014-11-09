@@ -13,8 +13,8 @@
 (defonce sc (f/spark-context c))
 
 (defn process-lines []
-  (-> (f/text-file sc "data.txt")
-      (f/map (f/fn [s] (convert-line s)))
+  (-> (f/text-file sc "data1.txt")
+      (f/map (f/fn [s] (convert-text-line s)))
       (f/reduce (f/fn [x y] (+ x y)))))
 
 

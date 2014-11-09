@@ -2,7 +2,6 @@
   (:import (com.vividsolutions.jts.algorithm.match HausdorffSimilarityMeasure))
   (:require [geo.jts :as jts]))
 
-
 (def similarity-measure
   (HausdorffSimilarityMeasure.))
 
