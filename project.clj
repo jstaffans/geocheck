@@ -7,7 +7,9 @@
                  [yieldbot/flambo "0.3.2"]
                  [org.apache.spark/spark-core_2.10 "1.0.1"]
                  [factual/geo "1.0.0"]
-                 [criterium "0.4.3"]]
+                 [criterium "0.4.3"]
+                 [incanter "1.5.5"]]
+
   :profiles {:uberjar {:aot :all}}
   :jvm-opts ["-Xmx2g"]
   :main ^:skip-aot geocheck.flambo

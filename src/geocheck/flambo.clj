@@ -1,5 +1,6 @@
 (ns geocheck.flambo
-  (:require [geocheck.spatial :refer :all]
+  (:require [geocheck.core :refer :all]
+            [geocheck.spatial :refer :all]
             [geocheck.transforms :refer :all]
             [flambo.api :as f]
             [flambo.conf :as fconf])
@@ -10,11 +11,17 @@
          (fconf/master "local[*]")
          (fconf/app-name "geocheck")))
 
-(defonce sc (f/spark-context c))
+(defonce sc (delay (f/spark-context c)))
 
-(defn process-lines []
-  (-> (f/text-file sc "data1.txt")
-      (f/map (f/fn [s] (convert-text-line s)))
-      (f/reduce (f/fn [x y] (+ x y)))))
+(defn process-random-flambo
+  []
+  (let [line-string-pairs (f/parallelize @sc (take 10000 (random-line-strings 500)))]
+    (-> line-string-pairs
+        (f/map (f/fn [[a b]] (similarity a b)))
+        f/collect
+        clojure.pprint/pprint)))
 
+; REPL
+(comment
+  (process-random-flambo))
 
